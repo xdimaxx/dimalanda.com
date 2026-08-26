@@ -4,170 +4,231 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dima Landa — Dynamics 365 &amp; Microsoft 365 Audits</title>
-<meta name="description" content="Independent audits of Dynamics 365 CRM, Microsoft 365 and Entra ID. Find what your CRM is quietly costing you: security gaps, wasted licenses, broken data. 20+ years in IT, remote worldwide.">
+<meta name="description" id="metaDesc" content="Independent audits of Dynamics 365 CRM, Microsoft 365 and Entra ID. Security gaps, wasted licenses, broken data. 20+ years in IT, remote worldwide.">
+<link rel="alternate" hreflang="en" href="https://dimalanda.com/">
+<link rel="alternate" hreflang="de" href="https://dimalanda.com/#de">
+<link rel="alternate" hreflang="ko" href="https://dimalanda.com/#ko">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500;12..96,75..100,700;12..96,75..100,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#12212B;
-  --ink-soft:#4A5D68;
+  --ink-soft:#44585F;
   --paper:#F1F3F0;
   --panel:#FFFFFF;
-  --rule:#CBD3CE;
-  --accent:#1B5E57;
-  --high:#B4402C;
-  --med:#B4830F;
-  --low:#5E7C8C;
+  --rule:#C4CEC9;
+  --accent:#17564F;
+  --high:#A93A26;
+  --med:#9A6E0B;
+  --low:#4F6E7E;
   --max:1120px;
+  --display:"Bricolage Grotesque","Public Sans",system-ui,sans-serif;
+  --body:"Public Sans",system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+html.lang-ko{
+  --display:"Noto Sans KR","Bricolage Grotesque",system-ui,sans-serif;
+  --body:"Noto Sans KR","Public Sans",system-ui,sans-serif;
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;hyphens:manual;scroll-behavior:smooth}
+html.lang-de{hyphens:auto}
 body{
-  margin:0;
-  background:var(--paper);
-  color:var(--ink);
-  font-family:"Public Sans",system-ui,sans-serif;
-  font-size:17px;
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:17px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;overflow-x:clip;
 }
-h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",sans-serif;font-weight:800;letter-spacing:-.025em;line-height:1.02;margin:0}
+h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.022em;line-height:1.06;margin:0}
+html.lang-ko h1,html.lang-ko h2,html.lang-ko h3{font-weight:700;letter-spacing:-.01em;line-height:1.3}
+html.lang-ko body{line-height:1.72}
 p{margin:0}
 a{color:inherit}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
-.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px;width:100%}
+@media(min-width:760px){.wrap{padding:0 28px}}
+.mono{font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;line-height:1.5}
+@media(min-width:760px){.mono{font-size:.73rem;letter-spacing:.14em}}
+html.lang-ko .mono{text-transform:none;letter-spacing:.02em;font-family:var(--body);font-weight:500;font-size:.85rem}
 
 /* ---------- top bar ---------- */
-.topbar{
-  position:sticky;top:0;z-index:20;
-  background:rgba(241,243,240,.88);
-  backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--rule);
+.topbar{position:sticky;top:0;z-index:20;background:rgba(241,243,240,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.topbar .wrap{display:flex;align-items:center;gap:14px;min-height:58px}
+.brand{font-family:var(--display);font-weight:600;letter-spacing:-.02em;font-size:1.05rem;white-space:nowrap;margin-right:auto}
+.tagline{color:var(--ink-soft);display:none;margin-right:auto}
+@media(min-width:1040px){.tagline{display:block}.brand{margin-right:0}}
+.langs{display:flex;border:1px solid var(--rule);border-radius:2px;overflow:hidden;flex:none}
+.lang{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;font-weight:500;
+  background:transparent;border:0;border-left:1px solid var(--rule);
+  color:var(--ink-soft);padding:8px 11px;cursor:pointer;min-height:38px;
 }
-.topbar .wrap{display:flex;align-items:center;gap:20px;height:60px}
-.brand{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;letter-spacing:-.02em;font-size:1.05rem;white-space:nowrap}
-.topbar .mono{color:var(--ink-soft);flex:1;display:none}
-@media(min-width:820px){.topbar .mono{display:block}}
+.lang:first-child{border-left:0}
+.lang[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.topbar .btn{display:none}
+@media(min-width:640px){.topbar .btn{display:inline-block}}
 .btn{
   display:inline-block;border:1px solid var(--ink);background:var(--ink);color:var(--paper);
-  padding:10px 18px;border-radius:2px;text-decoration:none;font-weight:600;font-size:.92rem;
-  transition:transform .15s ease,background .15s ease;
+  padding:13px 20px;border-radius:2px;text-decoration:none;font-weight:600;font-size:1rem;
+  line-height:1.2;transition:background .15s ease;
 }
-.btn:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-1px)}
+.btn:hover{background:var(--accent);border-color:var(--accent)}
 .btn-ghost{background:transparent;color:var(--ink);border-color:var(--rule)}
 .btn-ghost:hover{background:transparent;color:var(--accent);border-color:var(--accent)}
-.btn-sm{padding:7px 14px;font-size:.85rem}
+.btn-sm{padding:9px 15px;font-size:.9rem}
 a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
 /* ---------- hero ---------- */
-.hero{
-  padding:64px 0 72px;
-  background-image:repeating-linear-gradient(to bottom,transparent 0 31px,rgba(18,33,43,.045) 31px 32px);
-}
-.hero .wrap{display:grid;gap:48px}
-@media(min-width:940px){.hero .wrap{grid-template-columns:1.02fr .98fr;gap:56px;align-items:start}}
-.eyebrow{color:var(--accent);margin-bottom:18px}
-h1{font-size:clamp(2.5rem,6.2vw,4rem)}
+.hero{padding:44px 0 52px;background-image:repeating-linear-gradient(to bottom,transparent 0 31px,rgba(18,33,43,.04) 31px 32px)}
+@media(min-width:760px){.hero{padding:64px 0 72px}}
+.hero .wrap{display:grid;gap:40px}
+@media(min-width:960px){.hero .wrap{grid-template-columns:1.02fr .98fr;gap:56px;align-items:start}}
+.eyebrow{color:var(--accent);margin-bottom:16px}
+h1{font-size:clamp(2.05rem,7.6vw,4rem)}
+@media(min-width:760px){h1{font-size:clamp(2.6rem,5.6vw,4rem)}}
+html.lang-ko h1{font-size:clamp(1.85rem,6.6vw,3.3rem)}
 h1 em{font-style:normal;color:var(--accent);text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:6px}
-.lede{margin-top:22px;font-size:1.12rem;max-width:33ch;color:var(--ink-soft)}
-.cta-row{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px}
+.lede{margin-top:20px;font-size:1.08rem}
+@media(min-width:960px){.lede{max-width:35ch;font-size:1.12rem}}
+.cta-row{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px}
+.cta-row .btn{flex:1 1 auto;text-align:center}
+@media(min-width:520px){.cta-row .btn{flex:0 0 auto}}
 .note{margin-top:20px;color:var(--ink-soft)}
 
-/* ---------- signature: findings panel ---------- */
-.report{
-  background:var(--panel);
-  border:1px solid var(--ink);
-  border-radius:3px;
-  box-shadow:10px 10px 0 rgba(18,33,43,.08);
-  overflow:hidden;
+/* ---------- findings panel ---------- */
+.report{position:relative;background:var(--panel);border:1px solid var(--ink);border-radius:3px;box-shadow:5px 5px 0 rgba(18,33,43,.09);overflow:hidden}
+.scan{
+  position:absolute;left:0;right:0;top:0;height:64px;pointer-events:none;z-index:2;
+  background:linear-gradient(to bottom,rgba(23,86,79,0) 0%,rgba(23,86,79,.09) 60%,rgba(23,86,79,.5) 100%);
+  border-bottom:1px solid rgba(23,86,79,.55);
+  animation:scan 9s cubic-bezier(.5,0,.5,1) 1.4s infinite;opacity:0;
 }
-.report-head{
-  display:flex;justify-content:space-between;align-items:baseline;gap:12px;
-  padding:14px 18px;border-bottom:1px solid var(--rule);background:#F7F8F6;
+@keyframes scan{
+  0%{transform:translateY(-70px);opacity:0}
+  6%{opacity:1}
+  38%{transform:translateY(560px);opacity:1}
+  46%{transform:translateY(560px);opacity:0}
+  100%{transform:translateY(560px);opacity:0}
 }
+@media(min-width:760px){.report{box-shadow:10px 10px 0 rgba(18,33,43,.08)}}
+.report-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:13px 16px;border-bottom:1px solid var(--rule);background:#F7F8F6}
 .report-head .mono{color:var(--ink-soft)}
-.report-head strong{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.14em;color:var(--accent)}
+.report-head strong{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;color:var(--accent);font-weight:600;white-space:nowrap}
+html.lang-ko .report-head strong{font-family:var(--body);letter-spacing:0;font-size:.8rem}
 .rows{list-style:none;margin:0;padding:0}
-.row{
-  display:grid;grid-template-columns:62px 1fr;gap:14px;
-  padding:15px 18px;border-bottom:1px solid var(--rule);
-  transition:background .15s ease;
-}
+.row{display:block;padding:15px 16px;border-bottom:1px solid var(--rule);transition:background .15s ease}
+@media(min-width:520px){.row{display:grid;grid-template-columns:80px 1fr;gap:14px;padding:16px 18px}}
 .row:hover{background:#F7F9F7}
 .sev{
-  font-family:"IBM Plex Mono",monospace;font-size:.63rem;letter-spacing:.1em;font-weight:600;
-  align-self:start;padding:3px 0 3px 8px;border-left:3px solid currentColor;
+  display:inline-block;font-family:var(--mono);font-size:.68rem;letter-spacing:.09em;font-weight:600;
+  padding:2px 0 2px 8px;border-left:3px solid currentColor;margin-bottom:7px;align-self:start;
 }
+@media(min-width:520px){.sev{margin-bottom:0}}
+html.lang-ko .sev{font-family:var(--body);letter-spacing:0;font-size:.8rem}
 .sev.high{color:var(--high)}
 .sev.med{color:var(--med)}
 .sev.low{color:var(--low)}
-.row h3{font-family:"Public Sans",sans-serif;font-weight:600;font-size:1rem;letter-spacing:0;line-height:1.35}
-.row p{color:var(--ink-soft);font-size:.9rem;margin-top:3px}
-.report-foot{padding:13px 18px;color:var(--ink-soft);background:#F7F8F6}
+.row h3{font-family:var(--body);font-weight:600;font-size:1.02rem;letter-spacing:0;line-height:1.4}
+.row p{color:var(--ink-soft);font-size:.94rem;margin-top:4px}
+.report-foot{padding:13px 16px;background:#F7F8F6}
 .report-foot .mono{color:var(--ink-soft)}
 
 /* ---------- sections ---------- */
 section{border-top:1px solid var(--rule)}
 .hero{border-top:0}
-.block{padding:66px 0}
+.block{padding:52px 0}
+@media(min-width:760px){.block{padding:70px 0}}
 .sec-label{color:var(--accent);margin-bottom:14px}
-h2{font-size:clamp(1.7rem,3.6vw,2.4rem);max-width:22ch}
-.sub{margin-top:14px;color:var(--ink-soft);max-width:56ch}
+h2{font-size:clamp(1.6rem,5.2vw,2.4rem);max-width:24ch}
+@media(min-width:760px){h2{font-size:clamp(1.8rem,3.6vw,2.4rem)}}
+.sub{margin-top:16px;color:var(--ink-soft);max-width:58ch;font-size:1.03rem}
+.sub + .sub{margin-top:14px}
 
-.grid{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:40px}
-@media(min-width:700px){.grid{grid-template-columns:1fr 1fr}}
-.card{background:var(--paper);padding:28px 26px}
-.card h3{font-size:1.22rem;margin-bottom:10px}
-.card p{color:var(--ink-soft);font-size:.97rem}
-.card ul{margin:14px 0 0;padding:0;list-style:none}
-.card li{font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--ink-soft);padding:4px 0 4px 16px;position:relative}
+.grid{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:34px}
+@media(min-width:720px){.grid{grid-template-columns:1fr 1fr}}
+.card{background:var(--paper);padding:26px 22px}
+@media(min-width:760px){.card{padding:30px 28px}}
+.card h3{font-size:1.2rem;margin-bottom:10px}
+.card p{color:var(--ink-soft);font-size:.98rem}
+.card ul{margin:16px 0 0;padding:0;list-style:none}
+.card li{font-family:var(--mono);font-size:.83rem;line-height:1.55;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative}
+html.lang-ko .card li{font-family:var(--body);font-size:.93rem}
 .card li::before{content:"—";position:absolute;left:0;color:var(--accent)}
 
-.steps{display:grid;gap:28px;margin-top:40px;counter-reset:s}
-@media(min-width:760px){.steps{grid-template-columns:repeat(3,1fr);gap:32px}}
-.step{padding-top:18px;border-top:2px solid var(--ink)}
-.step .num{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.14em;color:var(--accent);display:block;margin-bottom:10px}
-.step h3{font-size:1.15rem;margin-bottom:8px}
-.step p{color:var(--ink-soft);font-size:.95rem}
+.steps{display:grid;gap:26px;margin-top:34px}
+@media(min-width:780px){.steps{grid-template-columns:repeat(3,1fr);gap:32px}}
+.step{padding-top:16px;border-top:2px solid var(--ink)}
+.step .num{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;color:var(--accent);display:block;margin-bottom:10px}
+html.lang-ko .step .num{font-family:var(--body);letter-spacing:0;font-size:.85rem;font-weight:500}
+.step h3{font-size:1.14rem;margin-bottom:8px}
+.step p{color:var(--ink-soft);font-size:.97rem}
 
-.about{display:grid;gap:36px}
-@media(min-width:860px){.about{grid-template-columns:1.15fr .85fr;gap:56px;align-items:start}}
-.about p+p{margin-top:16px}
+.about{display:grid;gap:32px}
+@media(min-width:880px){.about{grid-template-columns:1.15fr .85fr;gap:56px;align-items:start}}
 .facts{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
-.facts li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:.95rem}
-.facts .k{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);padding-top:3px}
-.facts .v{text-align:right;font-weight:500}
+.facts li{display:flex;flex-direction:column;gap:2px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:1rem}
+@media(min-width:520px){.facts li{flex-direction:row;justify-content:space-between;gap:16px}.facts .v{text-align:right}}
+.facts .k{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);padding-top:3px;white-space:nowrap}
+html.lang-ko .facts .k{font-family:var(--body);text-transform:none;letter-spacing:0;font-size:.87rem}
+.facts .v{font-weight:500}
 
 .contact{background:var(--ink);color:var(--paper)}
 .contact h2{color:var(--paper)}
-.contact .sec-label{color:#7FB8AF}
-.contact .sub{color:#A9BAC2}
+.contact .sec-label{color:#82BDB3}
+.contact .sub{color:#B2C2C8}
 .mail{
-  display:inline-block;margin-top:28px;
-  font-family:"Bricolage Grotesque",sans-serif;font-weight:700;letter-spacing:-.02em;
-  font-size:clamp(1.35rem,4.4vw,2.2rem);color:var(--paper);
-  text-decoration:none;border-bottom:2px solid #7FB8AF;padding-bottom:4px;
-  word-break:break-all;
+  display:inline-block;margin-top:26px;font-family:var(--display);font-weight:800;
+  letter-spacing:-.02em;font-size:clamp(1.25rem,5.6vw,2.2rem);color:var(--paper);
+  text-decoration:none;border-bottom:2px solid #82BDB3;padding-bottom:4px;
+  overflow-wrap:break-word;max-width:100%;
 }
-.mail:hover{color:#7FB8AF}
+.mail:hover{color:#82BDB3}
 
-footer{border-top:1px solid var(--rule);padding:26px 0}
-footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
+footer{border-top:1px solid var(--rule);padding:24px 0}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}
 footer .mono{color:var(--ink-soft)}
 
-/* ---------- load sequence ---------- */
+/* ---------- stats strip ---------- */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.stat{background:var(--paper);padding:26px 14px;text-align:center}
+@media(min-width:760px){.stat{padding:34px 20px}}
+.stat .n{
+  display:block;font-family:var(--display);font-weight:800;letter-spacing:-.03em;
+  font-size:clamp(2.1rem,9vw,3.4rem);line-height:1;color:var(--accent);
+  font-variant-numeric:tabular-nums;
+}
+.stat .l{display:block;margin-top:9px;color:var(--ink-soft);font-size:.82rem;line-height:1.35}
+@media(min-width:760px){.stat .l{font-size:.92rem}}
+
+/* ---------- scroll reveal + hover motion ---------- */
+.card,.step,.facts li,.stat{transition:transform .45s cubic-bezier(.2,.7,.3,1),opacity .45s ease,background .2s ease}
+.io{opacity:0;transform:translateY(14px)}
+.io.in{opacity:1;transform:none}
+.card{position:relative}
+.card::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);transform:scaleY(0);transform-origin:top;transition:transform .3s cubic-bezier(.2,.7,.3,1)}
+.card:hover::after,.card:focus-within::after{transform:scaleY(1)}
+.card:hover{background:#F6F8F5}
+.step{transition:border-color .2s ease}
+.step:hover{border-top-color:var(--accent)}
+.btn{will-change:transform}
+.btn:active{transform:translateY(1px)}
+.sev{transition:transform .2s ease}
+.row:hover .sev{transform:translateX(2px)}
+footer .joke{color:var(--ink-soft);flex-basis:100%;order:3;padding-top:6px}
+
 .row,.reveal{opacity:0;transform:translateY(8px);animation:rise .5s cubic-bezier(.2,.7,.3,1) forwards}
 .reveal{animation-delay:.05s}
-.rows .row:nth-child(1){animation-delay:.30s}
-.rows .row:nth-child(2){animation-delay:.42s}
-.rows .row:nth-child(3){animation-delay:.54s}
-.rows .row:nth-child(4){animation-delay:.66s}
-.rows .row:nth-child(5){animation-delay:.78s}
+.rows .row:nth-child(1){animation-delay:.28s}
+.rows .row:nth-child(2){animation-delay:.4s}
+.rows .row:nth-child(3){animation-delay:.52s}
+.rows .row:nth-child(4){animation-delay:.64s}
+.rows .row:nth-child(5){animation-delay:.76s}
 @keyframes rise{to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
   .row,.reveal{animation:none;opacity:1;transform:none}
-  .btn:hover{transform:none}
+  .scan{display:none}
+  .io{opacity:1;transform:none}
+  .card,.step,.facts li,.stat,.sev,.btn{transition:none}
 }
 </style>
 </head>
@@ -176,145 +237,76 @@ footer .mono{color:var(--ink-soft)}
 <header class="topbar">
   <div class="wrap">
     <span class="brand">Dima Landa</span>
-    <span class="mono">Dynamics 365 · Microsoft 365 · Entra ID — independent audits</span>
-    <a class="btn btn-sm" href="mailto:dima@dimalanda.com?subject=Audit%20enquiry">Book an audit</a>
+    <span class="mono tagline" data-i18n="nav.tag"></span>
+    <div class="langs" role="group" aria-label="Language">
+      <button class="lang" data-lang="en" aria-pressed="true">EN</button>
+      <button class="lang" data-lang="de" aria-pressed="false">DE</button>
+      <button class="lang" data-lang="ko" aria-pressed="false">KO</button>
+    </div>
+    <a class="btn btn-sm mailto" href="mailto:dima@dimalanda.com" data-i18n="nav.cta"></a>
   </div>
 </header>
 
 <main>
-
 <section class="hero">
   <div class="wrap">
     <div class="reveal">
-      <p class="mono eyebrow">Independent audit · no vendor, no resale</p>
-      <h1>Find what your CRM is <em>quietly costing you</em>.</h1>
-      <p class="lede">I audit Dynamics 365, Microsoft 365 and Entra ID tenants, then hand you a report you can act on — security gaps, licenses you're paying for twice, and the data problems nobody has looked at in years.</p>
+      <p class="mono eyebrow" data-i18n="hero.eyebrow"></p>
+      <h1 data-i18n="hero.h1"></h1>
+      <p class="lede" data-i18n="hero.lede"></p>
       <div class="cta-row">
-        <a class="btn" href="mailto:dima@dimalanda.com?subject=Audit%20enquiry">Book an audit</a>
-        <a class="btn btn-ghost" href="#scope">See what's covered</a>
+        <a class="btn mailto" href="mailto:dima@dimalanda.com" data-i18n="hero.cta1"></a>
+        <a class="btn btn-ghost" href="#scope" data-i18n="hero.cta2"></a>
       </div>
-      <p class="mono note">20+ years in IT · remote, worldwide · reports in English, Hebrew or Russian</p>
+      <p class="mono note" data-i18n="hero.note"></p>
     </div>
 
-    <div class="report reveal" aria-label="Sample audit findings">
+    <div class="report reveal">
+      <div class="scan" aria-hidden="true"></div>
       <div class="report-head">
-        <span class="mono">Sample findings</span>
-        <strong>TENANT REVIEW</strong>
+        <span class="mono" data-i18n="rep.head"></span>
+        <strong data-i18n="rep.tag"></strong>
       </div>
       <ul class="rows">
-        <li class="row">
-          <span class="sev high mono">High</span>
-          <div>
-            <h3>Global admin accounts without MFA</h3>
-            <p>Four privileged accounts, two of them shared. One belongs to a former employee.</p>
-          </div>
-        </li>
-        <li class="row">
-          <span class="sev high mono">High</span>
-          <div>
-            <h3>Guest users with access to CRM records</h3>
-            <p>External accounts inherited access through a legacy security role.</p>
-          </div>
-        </li>
-        <li class="row">
-          <span class="sev med mono">Medium</span>
-          <div>
-            <h3>31 assigned licenses, 12 unused for 90 days</h3>
-            <p>Plus six users on a plan a tier above what they actually use.</p>
-          </div>
-        </li>
-        <li class="row">
-          <span class="sev med mono">Medium</span>
-          <div>
-            <h3>Duplicate accounts skewing pipeline reports</h3>
-            <p>No matching rules configured since go-live; sales forecasts double-count.</p>
-          </div>
-        </li>
-        <li class="row">
-          <span class="sev low mono">Low</span>
-          <div>
-            <h3>Workflows still running for a retired process</h3>
-            <p>Firing daily, emailing a distribution list nobody reads.</p>
-          </div>
-        </li>
+        <li class="row"><span class="sev high" data-i18n="sev.high"></span><div><h3 data-i18n="rep.f1t"></h3><p data-i18n="rep.f1d"></p></div></li>
+        <li class="row"><span class="sev high" data-i18n="sev.high"></span><div><h3 data-i18n="rep.f2t"></h3><p data-i18n="rep.f2d"></p></div></li>
+        <li class="row"><span class="sev med" data-i18n="sev.med"></span><div><h3 data-i18n="rep.f3t"></h3><p data-i18n="rep.f3d"></p></div></li>
+        <li class="row"><span class="sev med" data-i18n="sev.med"></span><div><h3 data-i18n="rep.f4t"></h3><p data-i18n="rep.f4d"></p></div></li>
+        <li class="row"><span class="sev low" data-i18n="sev.low"></span><div><h3 data-i18n="rep.f5t"></h3><p data-i18n="rep.f5d"></p></div></li>
       </ul>
-      <div class="report-foot"><span class="mono">A full report typically runs 30–60 findings, each with a fix and an owner.</span></div>
+      <div class="report-foot"><span class="mono" data-i18n="rep.foot"></span></div>
     </div>
   </div>
 </section>
 
+<section class="stats">
+  <div class="stat io"><span class="n" data-count="20" data-suffix="+">0</span><span class="l" data-i18n="st1"></span></div>
+  <div class="stat io"><span class="n" data-count="4">0</span><span class="l" data-i18n="st2"></span></div>
+  <div class="stat io"><span class="n" data-count="60">0</span><span class="l" data-i18n="st3"></span></div>
+</section>
+
 <section id="scope">
   <div class="wrap block">
-    <p class="mono sec-label">Scope</p>
-    <h2>Four things I check, in every tenant.</h2>
-    <p class="sub">You choose the whole audit or a single area. Either way you get findings ranked by what they cost you, not by what's easiest to fix.</p>
-
+    <p class="mono sec-label" data-i18n="scope.label"></p>
+    <h2 data-i18n="scope.h2"></h2>
+    <p class="sub" data-i18n="scope.sub"></p>
     <div class="grid">
-      <div class="card">
-        <h3>CRM health</h3>
-        <p>Whether Dynamics 365 still matches how your team actually sells and serves — or how it did four consultants ago.</p>
-        <ul>
-          <li>Security roles and record ownership</li>
-          <li>Customizations, plugins, unmanaged solutions</li>
-          <li>Workflows and Power Automate flows still running</li>
-          <li>Adoption: who logs in, who works around it</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Security &amp; Entra ID</h3>
-        <p>Who can reach what, and what happens the day an account is compromised.</p>
-        <ul>
-          <li>Privileged accounts and standing admin rights</li>
-          <li>MFA and conditional access coverage</li>
-          <li>Guest access, stale accounts, orphaned mailboxes</li>
-          <li>App registrations and API permissions</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Licenses</h3>
-        <p>Most tenants pay for seats and tiers nobody needs. This part of the audit usually pays for the rest of it.</p>
-        <ul>
-          <li>Assigned vs. actually used, per user</li>
-          <li>Overlapping plans and duplicate add-ons</li>
-          <li>Right-sizing before your next renewal</li>
-          <li>A number you can take to procurement</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Data &amp; integrations</h3>
-        <p>Reports are only as good as what feeds them. This is where trust in the CRM is usually lost.</p>
-        <ul>
-          <li>Duplicates, dead records, missing owners</li>
-          <li>Integrations that fail silently</li>
-          <li>Backup, retention and export reality</li>
-          <li>What your dashboards actually measure</li>
-        </ul>
-      </div>
+      <div class="card io"><h3 data-i18n="c1.h"></h3><p data-i18n="c1.p"></p><ul><li data-i18n="c1.a"></li><li data-i18n="c1.b"></li><li data-i18n="c1.c"></li><li data-i18n="c1.d"></li></ul></div>
+      <div class="card io"><h3 data-i18n="c2.h"></h3><p data-i18n="c2.p"></p><ul><li data-i18n="c2.a"></li><li data-i18n="c2.b"></li><li data-i18n="c2.c"></li><li data-i18n="c2.d"></li></ul></div>
+      <div class="card io"><h3 data-i18n="c3.h"></h3><p data-i18n="c3.p"></p><ul><li data-i18n="c3.a"></li><li data-i18n="c3.b"></li><li data-i18n="c3.c"></li><li data-i18n="c3.d"></li></ul></div>
+      <div class="card io"><h3 data-i18n="c4.h"></h3><p data-i18n="c4.p"></p><ul><li data-i18n="c4.a"></li><li data-i18n="c4.b"></li><li data-i18n="c4.c"></li><li data-i18n="c4.d"></li></ul></div>
     </div>
   </div>
 </section>
 
 <section>
   <div class="wrap block">
-    <p class="mono sec-label">How it works</p>
-    <h2>Three steps, about two weeks.</h2>
-
+    <p class="mono sec-label" data-i18n="proc.label"></p>
+    <h2 data-i18n="proc.h2"></h2>
     <div class="steps">
-      <div class="step">
-        <span class="num">Step 01</span>
-        <h3>Read-only access</h3>
-        <p>A short call to agree on scope, then read-only access to the tenant. I change nothing without asking, and I sign your NDA before I see anything.</p>
-      </div>
-      <div class="step">
-        <span class="num">Step 02</span>
-        <h3>The audit</h3>
-        <p>I go through configuration, permissions, licenses and data, and talk to two or three people who use the system daily. Most of it happens without your team in the room.</p>
-      </div>
-      <div class="step">
-        <span class="num">Step 03</span>
-        <h3>Report and walkthrough</h3>
-        <p>A written report — every finding with its impact, a fix, and who should own it — plus a call to walk your team through it. Your IT partner can implement the fixes; so can I.</p>
-      </div>
+      <div class="step io"><span class="num" data-i18n="s1.n"></span><h3 data-i18n="s1.h"></h3><p data-i18n="s1.p"></p></div>
+      <div class="step io"><span class="num" data-i18n="s2.n"></span><h3 data-i18n="s2.h"></h3><p data-i18n="s2.p"></p></div>
+      <div class="step io"><span class="num" data-i18n="s3.n"></span><h3 data-i18n="s3.h"></h3><p data-i18n="s3.p"></p></div>
     </div>
   </div>
 </section>
@@ -323,17 +315,17 @@ footer .mono{color:var(--ink-soft)}
   <div class="wrap block">
     <div class="about">
       <div>
-        <p class="mono sec-label">Who you'd be working with</p>
-        <h2>One consultant, not a bench of juniors.</h2>
-        <p class="sub">I'm Dima Landa. I've spent more than twenty years in IT, the last stretch of it inside Dynamics 365 and Microsoft 365 tenants — mid-size companies with a CRM that grew faster than anyone documented it.</p>
-        <p class="sub">I don't resell licenses and I don't take partner commissions, so the recommendations you get are the ones I'd act on myself. If the honest answer is that your setup is fine and you should spend the money elsewhere, that's what the report will say.</p>
+        <p class="mono sec-label" data-i18n="ab.label"></p>
+        <h2 data-i18n="ab.h2"></h2>
+        <p class="sub" data-i18n="ab.p1"></p>
+        <p class="sub" data-i18n="ab.p2"></p>
       </div>
       <ul class="facts">
-        <li><span class="k">Experience</span><span class="v">20+ years in IT</span></li>
-        <li><span class="k">Focus</span><span class="v">Dynamics 365 CRM, Microsoft 365, Entra ID</span></li>
-        <li><span class="k">Based</span><span class="v">Israel — working remotely, worldwide</span></li>
-        <li><span class="k">Engagement</span><span class="v">Fixed-scope audit, fixed price</span></li>
-        <li><span class="k">Access</span><span class="v">Read-only, under NDA</span></li>
+        <li class="io"><span class="k" data-i18n="f1k"></span><span class="v" data-i18n="f1v"></span></li>
+        <li class="io"><span class="k" data-i18n="f2k"></span><span class="v" data-i18n="f2v"></span></li>
+        <li class="io"><span class="k" data-i18n="f3k"></span><span class="v" data-i18n="f3v"></span></li>
+        <li class="io"><span class="k" data-i18n="f4k"></span><span class="v" data-i18n="f4v"></span></li>
+        <li class="io"><span class="k" data-i18n="f5k"></span><span class="v" data-i18n="f5v"></span></li>
       </ul>
     </div>
   </div>
@@ -341,21 +333,232 @@ footer .mono{color:var(--ink-soft)}
 
 <section class="contact">
   <div class="wrap block">
-    <p class="mono sec-label">Get started</p>
-    <h2>Tell me what's not working.</h2>
-    <p class="sub">A sentence or two about your tenant and what's bothering you is enough. I'll reply with whether an audit is the right thing and what it would cost.</p>
-    <a class="mail" href="mailto:dima@dimalanda.com?subject=Audit%20enquiry">dima@dimalanda.com</a>
+    <p class="mono sec-label" data-i18n="ct.label"></p>
+    <h2 data-i18n="ct.h2"></h2>
+    <p class="sub" data-i18n="ct.sub"></p>
+    <a class="mail mailto" href="mailto:dima@dimalanda.com">dima@dimalanda.com</a>
   </div>
 </section>
-
 </main>
 
 <footer>
   <div class="wrap">
     <span class="mono">© 2026 Dima Landa</span>
     <span class="mono">dimalanda.com</span>
+    <span class="mono joke" data-i18n="joke"></span>
   </div>
 </footer>
 
+<script>
+const I18N = {
+en:{
+ "meta.title":"Dima Landa — Dynamics 365 & Microsoft 365 Audits",
+ "st1":"years in IT","st2":"areas checked in every audit","st3":"findings in a typical report","joke":"No cookies. No trackers. No chat bubble jumping out at you after eight seconds.",
+ "meta.desc":"Independent audits of Dynamics 365 CRM, Microsoft 365 and Entra ID. Security gaps, wasted licenses, broken data. 20+ years in IT, remote worldwide.",
+ "mail.subject":"Audit enquiry",
+ "nav.tag":"Dynamics 365 · Microsoft 365 · Entra ID — independent audits",
+ "nav.cta":"Book an audit",
+ "hero.eyebrow":"Independent audit · no reselling, no commissions",
+ "hero.h1":"Find what your CRM is <em>quietly costing you</em>.",
+ "hero.lede":"I audit Dynamics 365, Microsoft 365 and Entra ID tenants, then hand you a report you can act on — security gaps, licenses you're paying for twice, and the data problems nobody has looked at in years.",
+ "hero.cta1":"Book an audit","hero.cta2":"See what's covered",
+ "hero.note":"20+ years in IT · remote, worldwide · independent consultant",
+ "rep.head":"Sample findings","rep.tag":"TENANT REVIEW",
+ "sev.high":"High","sev.med":"Medium","sev.low":"Low",
+ "rep.f1t":"Global admin accounts without MFA","rep.f1d":"Four privileged accounts, two of them shared. One belongs to a former employee.",
+ "rep.f2t":"Guest users with access to CRM records","rep.f2d":"External accounts inherited access through a legacy security role.",
+ "rep.f3t":"31 assigned licenses, 12 unused for 90 days","rep.f3d":"Plus six users on a plan a tier above what they actually use.",
+ "rep.f4t":"Duplicate accounts skewing pipeline reports","rep.f4d":"No matching rules configured since go-live; forecasts double-count.",
+ "rep.f5t":"Workflows still running for a retired process","rep.f5d":"Firing daily, emailing a distribution list nobody reads.",
+ "rep.foot":"A full report typically runs 30–60 findings, each with a fix and an owner.",
+ "scope.label":"Scope","scope.h2":"Four things I check, in every tenant.",
+ "scope.sub":"You choose the whole audit or a single area. Either way you get findings ranked by what they cost you, not by what's easiest to fix.",
+ "c1.h":"CRM health","c1.p":"Whether Dynamics 365 still matches how your team actually sells and serves — or how it did four consultants ago.",
+ "c1.a":"Security roles and record ownership","c1.b":"Customizations, plugins, unmanaged solutions","c1.c":"Workflows and Power Automate flows still running","c1.d":"Adoption: who logs in, who works around it",
+ "c2.h":"Security & Entra ID","c2.p":"Who can reach what, and what happens the day an account is compromised.",
+ "c2.a":"Privileged accounts and standing admin rights","c2.b":"MFA and conditional access coverage","c2.c":"Guest access, stale accounts, orphaned mailboxes","c2.d":"App registrations and API permissions",
+ "c3.h":"Licenses","c3.p":"Most tenants pay for seats and tiers nobody needs. This part of the audit usually pays for the rest of it.",
+ "c3.a":"Assigned vs. actually used, per user","c3.b":"Overlapping plans and duplicate add-ons","c3.c":"Right-sizing before your next renewal","c3.d":"A number you can take to procurement",
+ "c4.h":"Data & integrations","c4.p":"Reports are only as good as what feeds them. This is where trust in the CRM is usually lost.",
+ "c4.a":"Duplicates, dead records, missing owners","c4.b":"Integrations that fail silently","c4.c":"Backup, retention and export reality","c4.d":"What your dashboards actually measure",
+ "proc.label":"How it works","proc.h2":"Three steps, about two weeks.",
+ "s1.n":"Step 01","s1.h":"Read-only access","s1.p":"A short call to agree on scope, then read-only access to the tenant. I change nothing without asking, and I sign your NDA before I see anything.",
+ "s2.n":"Step 02","s2.h":"The audit","s2.p":"I go through configuration, permissions, licenses and data, and talk to two or three people who use the system daily. Most of it happens without your team in the room.",
+ "s3.n":"Step 03","s3.h":"Report and walkthrough","s3.p":"A written report — every finding with its impact, a fix, and who should own it — plus a call to walk your team through it. Your IT partner can implement the fixes; so can I.",
+ "ab.label":"Who you'd be working with","ab.h2":"One consultant, not a bench of juniors.",
+ "ab.p1":"I'm Dima Landa. I've spent more than twenty years in IT, the last stretch of it inside Dynamics 365 and Microsoft 365 tenants — mid-size companies with a CRM that grew faster than anyone documented it.",
+ "ab.p2":"I don't resell licenses and I don't take partner commissions, so the recommendations you get are the ones I'd act on myself. If the honest answer is that your setup is fine and you should spend the money elsewhere, that's what the report will say.",
+ "f1k":"Experience","f1v":"20+ years in IT",
+ "f2k":"Focus","f2v":"Dynamics 365 CRM, Microsoft 365, Entra ID",
+ "f3k":"Based","f3v":"Israel — working remotely, worldwide",
+ "f4k":"Engagement","f4v":"Fixed scope, fixed price",
+ "f5k":"Access","f5v":"Read-only, under NDA",
+ "ct.label":"Get started","ct.h2":"Tell me what's not working.",
+ "ct.sub":"A sentence or two about your tenant and what's bothering you is enough. I'll reply with whether an audit is the right thing and what it would cost."
+},
+de:{
+ "meta.title":"Dima Landa — Audits für Dynamics 365 & Microsoft 365",
+ "st1":"Jahre in der IT","st2":"Bereiche in jedem Audit","st3":"Befunde in einem typischen Bericht","joke":"Keine Cookies. Kein Tracking. Kein Chatfenster, das nach acht Sekunden aufspringt.",
+ "meta.desc":"Unabhängige Audits von Dynamics 365 CRM, Microsoft 365 und Entra ID. Sicherheitslücken, ungenutzte Lizenzen, fehlerhafte Daten. Über 20 Jahre IT-Erfahrung, remote.",
+ "mail.subject":"Anfrage Audit",
+ "nav.tag":"Dynamics 365 · Microsoft 365 · Entra ID — unabhängige Audits",
+ "nav.cta":"Audit anfragen",
+ "hero.eyebrow":"Unabhängiges Audit · kein Lizenzverkauf, keine Provisionen",
+ "hero.h1":"Was Ihr CRM Sie <em>still und leise kostet</em>.",
+ "hero.lede":"Ich prüfe Ihre Dynamics 365-, Microsoft 365- und Entra ID-Umgebung und liefere Ihnen einen Bericht, mit dem Sie arbeiten können: Sicherheitslücken, doppelt bezahlte Lizenzen und Datenprobleme, die seit Jahren niemand angeschaut hat.",
+ "hero.cta1":"Audit anfragen","hero.cta2":"Umfang ansehen",
+ "hero.note":"Über 20 Jahre IT · remote, weltweit · unabhängiger Berater",
+ "rep.head":"Beispielhafte Befunde","rep.tag":"TENANT-PRÜFUNG",
+ "sev.high":"Hoch","sev.med":"Mittel","sev.low":"Niedrig",
+ "rep.f1t":"Globale Administratorkonten ohne MFA","rep.f1d":"Vier privilegierte Konten, zwei davon geteilt. Eines gehört einem ehemaligen Mitarbeiter.",
+ "rep.f2t":"Gastbenutzer mit Zugriff auf CRM-Daten","rep.f2d":"Externe Konten erhielten Zugriff über eine veraltete Sicherheitsrolle.",
+ "rep.f3t":"31 zugewiesene Lizenzen, 12 seit 90 Tagen ungenutzt","rep.f3d":"Dazu sechs Benutzer auf einem Plan über ihrem tatsächlichen Bedarf.",
+ "rep.f4t":"Doppelte Datensätze verfälschen die Pipeline","rep.f4d":"Seit dem Go-live keine Dublettenprüfung; Forecasts zählen doppelt.",
+ "rep.f5t":"Workflows eines abgeschafften Prozesses laufen weiter","rep.f5d":"Täglich ausgelöst, an einen Verteiler, den niemand liest.",
+ "rep.foot":"Ein vollständiger Bericht umfasst typischerweise 30–60 Befunde, jeweils mit Massnahme und Zuständigkeit.",
+ "scope.label":"Umfang","scope.h2":"Vier Bereiche, die ich in jeder Umgebung prüfe.",
+ "scope.sub":"Sie wählen das gesamte Audit oder einen einzelnen Bereich. In beiden Fällen sind die Befunde danach geordnet, was sie Sie kosten — nicht danach, was sich am einfachsten beheben lässt.",
+ "c1.h":"CRM-Zustand","c1.p":"Ob Dynamics 365 noch dazu passt, wie Ihr Team heute verkauft und betreut — oder nur dazu, wie es vier Berater zuvor war.",
+ "c1.a":"Sicherheitsrollen und Datensatzbesitz","c1.b":"Anpassungen, Plugins, nicht verwaltete Lösungen","c1.c":"Aktive Workflows und Power-Automate-Flows","c1.d":"Nutzung: wer sich anmeldet, wer daran vorbeiarbeitet",
+ "c2.h":"Sicherheit & Entra ID","c2.p":"Wer worauf zugreifen kann — und was passiert, wenn ein Konto kompromittiert wird.",
+ "c2.a":"Privilegierte Konten und dauerhafte Adminrechte","c2.b":"Abdeckung von MFA und Conditional Access","c2.c":"Gastzugriffe, inaktive Konten, verwaiste Postfächer","c2.d":"App-Registrierungen und API-Berechtigungen",
+ "c3.h":"Lizenzen","c3.p":"Die meisten Umgebungen zahlen für Plätze und Stufen, die niemand braucht. Dieser Teil des Audits finanziert meist den Rest.",
+ "c3.a":"Zugewiesen vs. tatsächlich genutzt, pro Benutzer","c3.b":"Überschneidende Pläne und doppelte Add-ons","c3.c":"Richtige Dimensionierung vor der nächsten Verlängerung","c3.d":"Eine Zahl, die Sie dem Einkauf vorlegen können",
+ "c4.h":"Daten & Integrationen","c4.p":"Auswertungen sind nur so gut wie ihre Datenbasis. Hier geht das Vertrauen ins CRM meist verloren.",
+ "c4.a":"Dubletten, tote Datensätze, fehlende Zuständigkeiten","c4.b":"Integrationen, die unbemerkt ausfallen","c4.c":"Backup, Aufbewahrung und Export in der Praxis","c4.d":"Was Ihre Dashboards tatsächlich messen",
+ "proc.label":"Ablauf","proc.h2":"Drei Schritte, rund zwei Wochen.",
+ "s1.n":"Schritt 01","s1.h":"Lesender Zugriff","s1.p":"Ein kurzes Gespräch zum Umfang, danach ausschliesslich lesender Zugriff auf die Umgebung. Ich ändere nichts ohne Rücksprache und unterzeichne Ihre Vertraulichkeitsvereinbarung, bevor ich etwas sehe.",
+ "s2.n":"Schritt 02","s2.h":"Das Audit","s2.p":"Ich prüfe Konfiguration, Berechtigungen, Lizenzen und Daten und spreche mit zwei oder drei Personen, die täglich mit dem System arbeiten. Das meiste läuft ohne Aufwand für Ihr Team.",
+ "s3.n":"Schritt 03","s3.h":"Bericht und Besprechung","s3.p":"Ein schriftlicher Bericht — jeder Befund mit Auswirkung, Massnahme und Zuständigkeit — sowie ein Gespräch, in dem ich ihn mit Ihrem Team durchgehe. Die Umsetzung kann Ihr IT-Partner übernehmen oder ich.",
+ "ab.label":"Mit wem Sie arbeiten","ab.h2":"Ein Berater, kein Team von Junioren.",
+ "ab.p1":"Ich bin Dima Landa. Ich arbeite seit über zwanzig Jahren in der IT, zuletzt vor allem in Dynamics 365- und Microsoft 365-Umgebungen — mittelständische Unternehmen, deren CRM schneller gewachsen ist, als es jemand dokumentiert hat.",
+ "ab.p2":"Ich verkaufe keine Lizenzen und erhalte keine Partnerprovisionen. Sie bekommen also die Empfehlungen, die ich selbst umsetzen würde. Wenn die ehrliche Antwort lautet, dass Ihr Setup in Ordnung ist und das Geld anderswo besser aufgehoben wäre, steht genau das im Bericht.",
+ "f1k":"Erfahrung","f1v":"Über 20 Jahre IT",
+ "f2k":"Schwerpunkt","f2v":"Dynamics 365 CRM, Microsoft 365, Entra ID",
+ "f3k":"Standort","f3v":"Israel — remote, weltweit",
+ "f4k":"Zusammenarbeit","f4v":"Fester Umfang, fester Preis",
+ "f5k":"Zugriff","f5v":"Nur lesend, unter Vertraulichkeitsvereinbarung",
+ "ct.label":"Kontakt","ct.h2":"Sagen Sie mir, was nicht funktioniert.",
+ "ct.sub":"Zwei Sätze zu Ihrer Umgebung und zu dem, was Sie stört, genügen. Ich melde mich zurück, ob ein Audit das Richtige ist und was es kosten würde."
+},
+ko:{
+ "meta.title":"Dima Landa — Dynamics 365 · Microsoft 365 감사",
+ "st1":"년 이상의 IT 경력","st2":"모든 감사에서 점검하는 영역","st3":"일반적인 보고서의 항목 수","joke":"쿠키 없음. 트래킹 없음. 8초 뒤에 튀어나오는 채팅창도 없음.",
+ "meta.desc":"Dynamics 365 CRM, Microsoft 365, Entra ID 독립 감사. 보안 취약점, 낭비되는 라이선스, 데이터 문제를 찾아드립니다. IT 경력 20년 이상, 전 세계 원격 진행.",
+ "mail.subject":"감사 문의",
+ "nav.tag":"Dynamics 365 · Microsoft 365 · Entra ID — 독립 감사",
+ "nav.cta":"감사 문의하기",
+ "hero.eyebrow":"독립 감사 · 라이선스 재판매 및 수수료 없음",
+ "hero.h1":"CRM이 <em>조용히 새게 하는 비용</em>을 찾아드립니다.",
+ "hero.lede":"Dynamics 365, Microsoft 365, Entra ID 테넌트를 점검하고 바로 실행할 수 있는 보고서를 드립니다. 보안 취약점, 이중으로 지불되는 라이선스, 수년간 아무도 들여다보지 않은 데이터 문제까지 확인합니다.",
+ "hero.cta1":"감사 문의하기","hero.cta2":"점검 범위 보기",
+ "hero.note":"IT 경력 20년 이상 · 전 세계 원격 진행 · 독립 컨설턴트",
+ "rep.head":"진단 결과 예시","rep.tag":"테넌트 점검",
+ "sev.high":"높음","sev.med":"중간","sev.low":"낮음",
+ "rep.f1t":"MFA가 적용되지 않은 전역 관리자 계정","rep.f1d":"권한 계정 4개 중 2개는 공용이며, 1개는 퇴사자 계정입니다.",
+ "rep.f2t":"CRM 레코드에 접근 가능한 게스트 사용자","rep.f2d":"오래된 보안 역할을 통해 외부 계정에 권한이 상속되었습니다.",
+ "rep.f3t":"할당된 라이선스 31개 중 12개가 90일간 미사용","rep.f3d":"실제 사용량보다 상위 등급 플랜을 쓰는 사용자도 6명 있습니다.",
+ "rep.f4t":"중복 레코드가 파이프라인 보고서를 왜곡","rep.f4d":"도입 이후 중복 검사 규칙이 없어 매출 예측이 이중으로 집계됩니다.",
+ "rep.f5t":"폐기된 프로세스의 워크플로가 계속 실행 중","rep.f5d":"매일 실행되어 아무도 읽지 않는 메일 그룹으로 발송됩니다.",
+ "rep.foot":"전체 보고서에는 보통 30~60개 항목이 포함되며, 각 항목마다 해결 방안과 담당자를 제시합니다.",
+ "scope.label":"점검 범위","scope.h2":"모든 테넌트에서 확인하는 네 가지 영역",
+ "scope.sub":"전체 감사 또는 특정 영역만 선택하실 수 있습니다. 어느 쪽이든 결과는 수정이 쉬운 순서가 아니라 비용이 큰 순서로 정리해 드립니다.",
+ "c1.h":"CRM 상태","c1.p":"Dynamics 365가 지금의 영업·서비스 방식에 맞는지, 아니면 여러 컨설턴트를 거치기 이전 상태에 머물러 있는지 확인합니다.",
+ "c1.a":"보안 역할 및 레코드 소유권","c1.b":"커스터마이징, 플러그인, 관리되지 않는 솔루션","c1.c":"실행 중인 워크플로 및 Power Automate 흐름","c1.d":"실제 활용도: 누가 쓰고 누가 우회하는가",
+ "c2.h":"보안 및 Entra ID","c2.p":"누가 무엇에 접근할 수 있는지, 계정이 탈취되면 어떤 일이 벌어지는지 점검합니다.",
+ "c2.a":"권한 계정 및 상시 관리자 권한","c2.b":"MFA 및 조건부 액세스 적용 범위","c2.c":"게스트 접근, 미사용 계정, 방치된 사서함","c2.d":"앱 등록 및 API 권한",
+ "c3.h":"라이선스","c3.p":"대부분의 조직은 필요 없는 좌석과 등급에 비용을 지불합니다. 이 항목만으로 감사 비용이 회수되는 경우가 많습니다.",
+ "c3.a":"사용자별 할당 대비 실제 사용 현황","c3.b":"중복되는 플랜과 추가 기능","c3.c":"다음 갱신 전 적정 규모 조정","c3.d":"구매팀에 제시할 수 있는 구체적 절감액",
+ "c4.h":"데이터 및 연동","c4.p":"보고서의 품질은 데이터 품질을 넘지 못합니다. CRM에 대한 신뢰는 대개 여기서 무너집니다.",
+ "c4.a":"중복 데이터, 방치된 레코드, 담당자 누락","c4.b":"조용히 실패하는 연동","c4.c":"백업·보존·내보내기의 실제 상태","c4.d":"대시보드가 실제로 측정하는 지표",
+ "proc.label":"진행 방식","proc.h2":"3단계, 약 2주 소요",
+ "s1.n":"1단계","s1.h":"읽기 전용 권한","s1.p":"짧은 통화로 범위를 정한 뒤 테넌트에 읽기 전용 권한을 받습니다. 협의 없이 어떤 설정도 변경하지 않으며, 자료를 보기 전에 기밀유지계약서에 서명합니다.",
+ "s2.n":"2단계","s2.h":"감사 진행","s2.p":"구성, 권한, 라이선스, 데이터를 점검하고 시스템을 매일 사용하는 두세 분과 이야기를 나눕니다. 대부분의 작업은 담당자 개입 없이 진행됩니다.",
+ "s3.n":"3단계","s3.h":"보고서 및 설명","s3.p":"각 항목의 영향, 해결 방안, 담당자를 정리한 보고서를 드리고 팀과 함께 내용을 검토하는 미팅을 진행합니다. 실행은 기존 IT 파트너가 맡으셔도 되고 제가 진행할 수도 있습니다.",
+ "ab.label":"함께 일하게 될 사람","ab.h2":"주니어 팀이 아니라 컨설턴트 한 사람이 직접 진행합니다.",
+ "ab.p1":"Dima Landa입니다. IT 분야에서 20년 이상 일했고, 최근에는 주로 Dynamics 365와 Microsoft 365 환경을 다뤄왔습니다. 문서화 속도보다 CRM이 더 빠르게 커져버린 중견 기업들이 주요 고객입니다.",
+ "ab.p2":"라이선스를 재판매하지 않고 파트너 수수료도 받지 않습니다. 그래서 제가 직접 실행할 만한 내용만 권해드립니다. 현재 설정에 문제가 없고 예산을 다른 곳에 쓰는 편이 낫다면, 보고서에 그렇게 씁니다.",
+ "f1k":"경력","f1v":"IT 20년 이상",
+ "f2k":"전문 분야","f2v":"Dynamics 365 CRM, Microsoft 365, Entra ID",
+ "f3k":"위치","f3v":"이스라엘 — 전 세계 원격 진행",
+ "f4k":"계약 방식","f4v":"범위와 금액 사전 확정",
+ "f5k":"접근 권한","f5v":"읽기 전용, 기밀유지계약 체결",
+ "ct.label":"문의","ct.h2":"무엇이 문제인지 알려주세요.",
+ "ct.sub":"현재 환경과 고민되는 점을 두어 문장으로 보내주시면 충분합니다. 감사가 적합한지, 비용은 어느 정도인지 회신드립니다."
+}
+};
+
+let koFontLoaded = false;
+function setLang(lang){
+  if(!I18N[lang]) lang = "en";
+  const t = I18N[lang];
+  const html = document.documentElement;
+  html.lang = lang;
+  html.className = "lang-" + lang;
+  document.title = t["meta.title"];
+  document.getElementById("metaDesc").setAttribute("content", t["meta.desc"]);
+  document.querySelectorAll("[data-i18n]").forEach(function(el){
+    const v = t[el.getAttribute("data-i18n")];
+    if(v !== undefined) el.innerHTML = v;
+  });
+  document.querySelectorAll(".mailto").forEach(function(a){
+    a.href = "mailto:dima@dimalanda.com?subject=" + encodeURIComponent(t["mail.subject"]);
+  });
+  document.querySelectorAll(".lang").forEach(function(b){
+    b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false");
+  });
+  if(lang === "ko" && !koFontLoaded){
+    const l = document.createElement("link");
+    l.rel = "stylesheet";
+    l.href = "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap";
+    document.head.appendChild(l);
+    koFontLoaded = true;
+  }
+}
+document.querySelectorAll(".lang").forEach(function(b){
+  b.addEventListener("click", function(){
+    const l = b.dataset.lang;
+    history.replaceState(null, "", l === "en" ? location.pathname : "#" + l);
+    setLang(l);
+  });
+});
+
+/* scroll reveal + counters */
+const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function countUp(el){
+  const target = parseInt(el.dataset.count,10);
+  const suffix = el.dataset.suffix || "";
+  if(reduce){ el.textContent = target + suffix; return; }
+  const dur = 1100, t0 = performance.now();
+  function tick(now){
+    const p = Math.min((now - t0)/dur, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(target * eased) + (p === 1 ? suffix : "");
+    if(p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+if("IntersectionObserver" in window){
+  const io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      const el = e.target;
+      const sibs = Array.prototype.slice.call(el.parentNode.children).filter(function(n){return n.classList.contains("io")});
+      el.style.transitionDelay = (Math.min(sibs.indexOf(el),5) * 90) + "ms";
+      el.classList.add("in");
+      const n = el.querySelector("[data-count]");
+      if(n && !n.dataset.done){ n.dataset.done = "1"; countUp(n); }
+      io.unobserve(el);
+    });
+  }, {threshold:.18, rootMargin:"0px 0px -40px 0px"});
+  document.querySelectorAll(".io").forEach(function(el){ io.observe(el); });
+} else {
+  document.querySelectorAll(".io").forEach(function(el){ el.classList.add("in"); });
+  document.querySelectorAll("[data-count]").forEach(countUp);
+}
+
+const h = (location.hash || "").replace("#","").toLowerCase();
+setLang(["de","ko"].indexOf(h) > -1 ? h : "en");
+</script>
 </body>
 </html>
