@@ -51,41 +51,41 @@ a{color:inherit}
 .langs{display:flex;gap:2px}
 .langs button{
   font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.09em;
-  background:transparent;border:1px solid #2B3745;color:#8B97A4;
+  background:transparent;border:1px solid var(--line);color:var(--muted);
   padding:6px 12px;cursor:pointer;transition:all .15s ease;
 }
-.langs button:hover{color:#fff;border-color:#44525F}
+.langs button:hover{color:var(--ink);border-color:#B4BCB4}
 .langs button[aria-current="true"]{background:var(--amber);color:var(--ink);border-color:var(--amber)}
 
-header{background:var(--ink);color:var(--paper);padding:24px 0 76px}
+header{background:var(--paper);color:var(--ink);padding:24px 0 84px;border-bottom:1px solid var(--line)}
 .topbar{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-.topbar .name{font-family:Archivo;font-weight:800;font-size:17px;letter-spacing:-.01em}
-.tagline{margin-top:14px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:#7B8895}
+.topbar .name{font-family:Archivo;font-weight:800;font-size:17px;letter-spacing:-.01em;color:var(--ink)}
+.tagline{margin-top:14px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted)}
 
 .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;margin-top:66px}
-h1{font-size:clamp(36px,5.2vw,58px);font-weight:800;color:#fff}
-h1 .thin{font-weight:500;color:#94A3B1;display:block}
-.lede{margin-top:24px;font-size:18px;color:#B6C0CA;max-width:46ch}
+h1{font-size:clamp(36px,5.2vw,58px);font-weight:800;color:var(--ink)}
+h1 .thin{font-weight:500;color:#96A0A8;display:block}
+.lede{margin-top:24px;font-size:18px;color:#3C4753;max-width:46ch}
 .cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
 .btn{display:inline-block;background:var(--amber);color:var(--ink);font-weight:600;
   font-size:15px;padding:13px 26px;text-decoration:none;
   transition:transform .15s ease,background .15s ease}
 .btn:hover{background:#EEA23A;transform:translateY(-1px)}
-.btn.ghost{background:transparent;color:var(--paper);border:1px solid #33404E}
-.btn.ghost:hover{background:#1B2530;transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid #C2C9C2}
+.btn.ghost:hover{background:#ECEEEA;transform:translateY(-1px)}
 
-.matrix{border:1px solid #26313D;background:#131A22;padding:20px}
+.matrix{border:1px solid var(--line);background:#fff;padding:20px}
 .matrix-head{display:flex;justify-content:space-between;align-items:center;
-  font-family:"IBM Plex Mono",monospace;font-size:11px;color:#7B8895;
+  font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);
   letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
 .grid{display:grid;grid-template-columns:130px repeat(9,1fr);gap:5px;align-items:center}
-.rowlab{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:#6E7B89;
+.rowlab{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:#7C8790;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cell{aspect-ratio:1;background:#1E2833;border-radius:1px}
-.cell.on{background:#2E3B49}
+.cell{aspect-ratio:1;background:#EDEFEB;border-radius:1px}
+.cell.on{background:#D6DBD5}
 .cell.flag{background:var(--amber)}
-.matrix-foot{margin-top:18px;padding-top:14px;border-top:1px solid #26313D;
-  font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#8B97A4;
+.matrix-foot{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted);
   display:flex;justify-content:space-between;gap:12px}
 .matrix-foot b{color:var(--amber);font-weight:500}
 
@@ -190,7 +190,7 @@ footer h2{font-size:clamp(26px,3.2vw,34px);color:#fff;font-weight:700;margin-bot
   </div>
 </header>
 
-<section id="services">
+<section id="services" style="border-top:0">
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow" data-i18n="s1eye"></p>
@@ -255,7 +255,6 @@ footer h2{font-size:clamp(26px,3.2vw,34px);color:#fff;font-weight:700;margin-bot
     <p style="color:#B6C0CA;max-width:48ch;margin-bottom:30px" data-i18n="fp"></p>
     <div class="contact-list">
       <div class="crow"><span class="k" data-i18n="kemail"></span><a href="mailto:dima@dimalanda.com">dima@dimalanda.com</a></div>
-      <div class="crow"><span class="k" data-i18n="kphone"></span><a href="tel:+972547203482">+972 54 720 3482</a></div>
       <div class="crow"><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/dimalanda-365crm">/in/dimalanda-365crm</a></div>
     </div>
     <p class="hours" data-i18n="hours"></p>
